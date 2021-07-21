@@ -11,15 +11,11 @@ import (
 
 func HandleRequests() {
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/hello", getHello).Methods("GET")
+	router.HandleFunc("/sitemap", getSitemap).Methods("GET")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
-func getHello(w http.ResponseWriter, r *http.Request) {
+func getSitemap(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(getSitemap())
-}
-
-func getSitemap() []string {
-	return customizer.GetFilteredUrls(viper.GetString("sitemap"))
+	json.NewEncoder(w).Encode(customizer.GetFilteredUrls(viper.GetString("sitemap")))
 }

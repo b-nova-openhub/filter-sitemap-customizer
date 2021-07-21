@@ -1,6 +1,6 @@
 # fisicus
 
-fisicus is a cli tool that allows {TYPE OF USERS} to manage {PLEASE DESCRIBE}.
+fisicus is a cli tool that allows seo analysts to filter a target sitemap with a desired pattern.
 
 # Build
 
@@ -8,13 +8,13 @@ You can build fisicus with the provided Makefile. In order to do so, execute fol
 projects root directory.
 
 ```
-$ ❯  make build
+$ ❯  make initall
 ```
 
 # Usage
 
 ```
-fisicus – command-line tool to manage {PLEASE DESCRIBE}
+fisicus – a service that applies pattern matching to a target sitemap
 
 Usage:
 fisicus [command]

@@ -12,7 +12,7 @@ var (
 
 	rootCmd = &cobra.Command{
 		Use:           "fisicus",
-		Short:         "fisicus – command-line tool to manage {PLEASE DESCRIBE}",
+		Short:         "fisicus – a service that applies pattern matching to a target sitemap",
 		Long:          ``,
 		Version:       "0.0.0",
 		SilenceErrors: true,

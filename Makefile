@@ -1,3 +1,7 @@
+all: build run
+
+initall: init build run
+
 init:
 	go mod download github.com/gorilla/mux
 	go mod download github.com/spf13/cobra
@@ -13,7 +17,8 @@ build:
 
 run:
 	chmod +x bin/fisicus
-	./bin/fisicus serve
+	chmod +x fisicus.sh
+	./fisicus.sh
 
 install:
 	go install -v ./...
