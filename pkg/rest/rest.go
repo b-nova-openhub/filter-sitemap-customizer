@@ -21,5 +21,5 @@ func getHello(w http.ResponseWriter, r *http.Request) {
 }
 
 func getSitemap() []string {
-	return customizer.GetContentHtml(viper.GetString("sitemap"))
+	return customizer.GetFilteredUrls(viper.GetString("sitemap"))
 }

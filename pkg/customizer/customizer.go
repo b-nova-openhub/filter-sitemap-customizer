@@ -4,34 +4,16 @@ import (
 	"fmt"
 	"github.com/b-nova-openhub/fisicus/pkg/filter"
 	"github.com/yterajima/go-sitemap"
-	"io/ioutil"
 	"log"
-	"net/http"
+	"net/url"
 )
 
-func GetContentHtml(url string) []string {
-	content := make([]string, 0, 0)
-	contentUrls := getFilteredUrls(url)
-	for _, url := range contentUrls {
-		get, getErr := http.Get(url)
-		if getErr != nil {
-			fmt.Println(getErr)
-		}
-		html, getErr := ioutil.ReadAll(get.Body)
-		closeErr := get.Body.Close()
-		if closeErr != nil {
-			return nil
-		}
-		content = append(content, string(html))
-	}
-	return content
-}
-
-func getFilteredUrls(url string) []string {
+func GetFilteredUrls(url string) []string {
 	result := make([]string, 0, 0)
 	urls := parseSitemap(url).URL
+	basePath := "https://" + getBasePath(url)
 	for _, url := range urls {
-		toAppend := filter.Filter(url)
+		toAppend := filter.Filter(url, basePath)
 		if toAppend != "" {
 			result = append(result, toAppend)
 			log.Println("Added following URL: ", toAppend)
@@ -51,3 +33,10 @@ func parseSitemap(url string) sitemap.Sitemap {
 	return smap
 }
 
+func getBasePath(s string) string {
+	u, err := url.Parse(s)
+	if err != nil {
+		panic(err)
+	}
+	return u.Host
+}
