@@ -15,6 +15,7 @@ tidy:
 	go fmt ./...
 
 build:
+	go test ./...
 	go build -o bin/fisicus main.go
 
 run:

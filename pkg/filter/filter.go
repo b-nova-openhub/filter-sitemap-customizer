@@ -13,23 +13,18 @@ func Filter(url sitemap.URL, basePath string, filters []string) string {
 }
 
 func matchesPattern(patterns []string, s, basePath string) bool {
+	var valid bool
 	for _, p := range patterns {
-		return handleMatch(basePath, p, s)
-	}
-	return false
-}
-
-func handleMatch(basePath, pattern, s string) bool {
-	if !strings.HasPrefix(pattern, "!") {
-		whitelist := MatchApplier{WhitelistMatcher{}}
-		if whitelist.Apply(s, basePath, pattern) {
-			return true
+		if !strings.HasPrefix(p, "!") {
+			whitelist := MatchApplier{WhitelistMatcher{}}
+			valid = whitelist.Apply(s, basePath, p)
+		} else {
+			blacklist := MatchApplier{BlacklistMatcher{}}
+			valid = blacklist.Apply(s, basePath, p)
 		}
-	} else {
-		blacklist := MatchApplier{BlacklistMatcher{}}
-		if blacklist.Apply(s, basePath, pattern) {
-			return false
+		if valid {
+			break
 		}
 	}
-	return false
+	return valid
 }
