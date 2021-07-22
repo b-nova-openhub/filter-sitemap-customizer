@@ -8,12 +8,12 @@ import (
 	"net/url"
 )
 
-func GetFilteredUrls(url string) []string {
+func GetFilteredUrls(url string, filters []string) []string {
 	result := make([]string, 0, 0)
 	urls := parseSitemap(url).URL
-	basePath := "https://" + getBasePath(url)
+	basePath := getBasePath(url)
 	for _, url := range urls {
-		toAppend := filter.Filter(url, basePath)
+		toAppend := filter.Filter(url, basePath, filters)
 		if toAppend != "" {
 			result = append(result, toAppend)
 			log.Println("Added following URL: ", toAppend)
@@ -38,5 +38,5 @@ func getBasePath(s string) string {
 	if err != nil {
 		panic(err)
 	}
-	return u.Host
+	return u.Scheme + "://" + u.Host
 }

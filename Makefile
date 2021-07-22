@@ -1,4 +1,4 @@
-all: build run
+all: tidy build run
 
 initall: init build run
 
@@ -11,6 +11,8 @@ init:
 	mkdir bin
 
 tidy:
+	go mod tidy
+	go fmt ./...
 
 build:
 	go build -o bin/fisicus main.go
