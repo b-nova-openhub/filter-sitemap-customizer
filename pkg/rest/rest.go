@@ -20,7 +20,8 @@ func HandleRequests() {
 func getSitemap(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	q := r.URL.Query()
-	json.NewEncoder(w).Encode(customizer.GetFilteredUrls(getSitemapUrl(q), getFilters(q)))
+	customizedUrls := customizer.GetFilteredUrls(getSitemapUrl(q), getFilters(q))
+	json.NewEncoder(w).Encode(customizedUrls)
 }
 
 func getSitemapUrl(q url.Values) string {
