@@ -1,0 +1,7 @@
+spec:
+  name: fisicus
+  services:
+    - name: fisicus-service
+      git:
+        branch: main
+        repo_clone_url: https://github.com/b-nova-openhub/filter-sitemap-customizer.git

@@ -83,7 +83,7 @@ default 8080.
 
 ### Quick Deployment to DigitalOcean's Kubernetes
 
-[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/b-nova-openhub/solr-page-exposer/tree/main)
+[![Deploy to DO](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/b-nova-openhub/filter-sitemap-customizer/tree/main)
 
 ## Contributing to gofisicus
 
