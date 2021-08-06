@@ -1,7 +1,5 @@
 all: tidy build run
 
-initall: init build run
-
 init:
 	go mod download github.com/gorilla/mux
 	go mod download github.com/spf13/cobra
@@ -9,6 +7,8 @@ init:
 	go mod tidy
 	go mod vendor
 	mkdir bin
+	build
+	run
 
 tidy:
 	go mod tidy
