@@ -1,5 +1,5 @@
-#config file for fisicus app
-############################
+# config file for fisicus app
+#############################
 
 # fully qualified target sitemap url
 # example: https://www.yourwebsite.com/sitemaps/sitemap.xml
@@ -8,3 +8,7 @@ sitemap: "https://b-nova.com/sitemaps/sitemap.xml"
 # filter patterns which are going to be matched against the url locs contained in the target sitemap
 # example: /blog/*, !/service/promotion.html
 filter: "/home/content/*"
+
+# port this web service is going to be served on. default port if none is being specified is 8080.
+# example: 8000
+port: "8080"
